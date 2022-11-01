@@ -1,7 +1,7 @@
 package com.example.vea.VEA.services;
 
 import com.example.vea.VEA.models.Person;
-import com.example.vea.VEA.repositories.PersonRepository;
+import com.example.vea.VEA.repositories.IPersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class PersonService {
 
     @Autowired
-    private PersonRepository personRepository;
+    private IPersonRepository personRepository;
 
     public List<Person> all(){
         return personRepository.getAll();

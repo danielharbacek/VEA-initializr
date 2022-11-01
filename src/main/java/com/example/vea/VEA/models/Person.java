@@ -1,10 +1,17 @@
 package com.example.vea.VEA.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Person {
 
-private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String firstName;
     private String lastName;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public Person(){

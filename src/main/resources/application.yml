@@ -5,3 +5,11 @@ spring:
     cache: false
   datasource:
     url: jdbc:h2:./myDb.data
+  jpa:
+    hibernate:
+      ddl-auto: create
+javax:
+  persistence:
+    schema-generation:
+      scripts:
+        action: create

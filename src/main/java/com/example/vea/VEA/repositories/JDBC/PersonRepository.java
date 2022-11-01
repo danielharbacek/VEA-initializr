@@ -1,11 +1,12 @@
-package com.example.vea.VEA.repositories;
+package com.example.vea.VEA.repositories.JDBC;
 
 import com.example.vea.VEA.models.Person;
+import com.example.vea.VEA.repositories.IPersonRepository;
+import com.example.vea.VEA.repositories.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -14,8 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-@Repository
-public class PersonRepository {
+//@Repository
+public class PersonRepository implements IPersonRepository {
 
     @Autowired
     private DataSource dataSource;
