@@ -58,10 +58,18 @@ public class Person {
     }
 
     public String getCity(){
+        if(address == null){
+            return "";
+        }
+
         return address.getCity();
     }
 
     public String getStreet(){
+        if(address == null){
+            return "";
+        }
+
         return address.getStreet();
     }
 }

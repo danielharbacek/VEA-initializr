@@ -1,6 +1,8 @@
 package com.example.vea.VEA.controllers;
 
+import com.example.vea.VEA.models.Address;
 import com.example.vea.VEA.models.Person;
+import com.example.vea.VEA.services.AddressService;
 import com.example.vea.VEA.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private AddressService addressService;
+
     @GetMapping(path = "/persons")
     public String persons(){
         return "persons";
@@ -26,11 +31,13 @@ public class PersonController {
     @GetMapping(path = "/persons/create")
     public String createPerson(Model model){
         model.addAttribute("person", new Person());
+        model.addAttribute("addresses", addressService.allWithEmpty());
         return "create-person";
     }
 
     @PostMapping(path = "/persons/create")
     public String insertPerson(@ModelAttribute Person person){
+        System.out.println("Person: " + person.getFirstName() + " " + person.getLastName() + " " + person.getStreet() + " " + person.getCity());
         personService.insertPerson(person);
         return "redirect:/persons";
     }
@@ -39,6 +46,7 @@ public class PersonController {
     public String editPerson(@PathVariable int id, Model model){
         model.addAttribute("person", personService.getById(id));
         model.addAttribute("id", id);
+        model.addAttribute("addresses", addressService.allWithEmpty());
         return "edit-person";
     }
 

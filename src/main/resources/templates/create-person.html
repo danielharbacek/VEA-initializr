@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Create person</title>
     <link rel="stylesheet" th:href="@{style.css}"/>
 </head>
 <body>
@@ -22,13 +22,10 @@
 
     <br>
 
-    <label for="street">Street</label>
-    <input type="text" id="street" th:field="*{address.street}">
-
-    <br>
-
-    <label for="city">City</label>
-    <input type="text" id="city" th:field="*{address.city}">
+    <label for="address">Address</label>
+    <select th:field="*{address}" id="address">
+        <option th:each="address : ${addresses}" th:value="${address.id}" th:text="${(address.city == null ? 'empty' : address.city) + ' ' + (address.street == null ? '' : address.street)}">Adresa</option>
+    </select>
 
     <br>
 

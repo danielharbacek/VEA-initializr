@@ -16,6 +16,6 @@ public class PerformanceFilter implements Filter {
         filterChain.doFilter(servletRequest, servletResponse);
         long end = System.currentTimeMillis();
         long elapsed = end - start;
-        System.out.println("Handling this request took " + elapsed + " ms");
+        //System.out.println("Handling this request took " + elapsed + " ms");
     }
 }

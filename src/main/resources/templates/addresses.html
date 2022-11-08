@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Addresses</title>
+    <link rel="stylesheet" th:href="@{style.css}"/>
+</head>
+<body>
+    <a th:href="@{/addresses/create}">Create Address</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Street</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody th:each="address, loop: ${addresses}">
+            <tr>
+                <th th:text="${address.street}"></th>
+                <th th:text="${address.city}"></th>
+                <th><a th:href="@{'/addresses/' + (${loop.index}+1) + '/edit'}">Edit</a></th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
